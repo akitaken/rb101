@@ -1,0 +1,58 @@
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+Cathy
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+cAthy
+=> Hi cAthy!
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+Cathy
+=> Hi Cathy!
+=> What is the loan amount? E.g. 10000
+10000
+=> What is the Annual Percentage Rate? E.g. 0.10
+.10
+=> What is the loan duration in years?
+1
+=> Your monthly loan repayment will be 879.1588723000987
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+Cathy
+=> Hi Cathy!
+=> What is the loan amount? E.g. 10000
+10000
+=> What is the Annual Percentage Rate? E.g. 0.10
+.0392
+=> What is the loan duration in years?
+1
+=> Your monthly loan repayment will be 851.1335724116975
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+cAthy
+=> Hi cAthy!
+=> What is the loan amount? E.g. 10000
+10000
+=> What is the Annual Percentage Rate? E.g. 0.10
+.03
+=> What is the loan duration in years?
+20
+=> Your monthly loan repayment will be 55.45975978539206
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator.rb
+=> Welcome to the Loan Monthly Repayment Calculator!
+=> What is your name?
+Cath
+=> Hi Cath!
+=> What is the loan amount? E.g. 10000
+100000
+=> What is the Annual Percentage Rate? E.g. 0.10
+.3
+=> What is the loan duration in years?
+20
+=> Your monthly loan repayment will be 2506.6891786069605
+Catherines-MacBook-Air:lesson2 catheriner$ ruby loan_calculator2.rb
