@@ -1,0 +1,21 @@
+en:
+  welcome: "Welcome to Loan Calculator! Enter your name:"
+  valid_name: "Make sure to enter a valid name."
+  loan_amount: "What is the loan amount (use only valid numbers e.g. 10000)?"
+  annual_rate: ""What is the Annual Percentage Rate? (e.g. use 5 for 5%)"
+  loan_duration_years: "What is the loan duration in years? (e.g. 3 for 3 years.)"
+  not_valid_float: "Please use positive valid numbers."
+  not_valid_integer: "Please use positive whole valid numbers."
+  correct_operator: "Must choose 1, 2, 3, 4"
+  recalculate: "Do you want to perform another loan calculation? (Y to calculate again)"
+  end: "Thank you for using the calculator, Good bye!"
+
+es:
+  welcome: "Bienvenido a la calculadora! Entre su nombre:"
+  valid_name: "Asegúrese de entrar un nombre válido."
+  first_number: "What's the first number?"
+  second_number: "What's the second number?"
+  not_valid: "Hmmm... that doesn't look like a valid number."
+  correct_operator: "Must choose 1, 2, 3, 4"
+  recalculate: "Do you want to perform another calculation? (Y to calculate again)"
+  end: "Thank you for using the Loan Calculator, Good bye!"
