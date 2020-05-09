@@ -5,6 +5,8 @@ LANGUAGE = 'en'
 MESSAGES = YAML.load_file('loan_calculator_messages.yml')
 
 
+
+
 ### Set up methods #########
 
 

@@ -1,0 +1,5 @@
+en:
+  welcome: "Welcome to Calculator! Enter your name:"
+  valid_name: "Make sure to enter a valid name."
+  loan_amount: "What is the loan amount (use only valid numbers e.g. 10000)?"
+  annual_rate: "What is the Annual Percentage Rate? (e.g. use 5 for 5%)"

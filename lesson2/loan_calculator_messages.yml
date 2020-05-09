@@ -1,21 +1,30 @@
+
 en:
   welcome: "Welcome to Loan Calculator! Enter your name:"
+  greeting: "Hello"
   valid_name: "Make sure to enter a valid name."
   loan_amount: "What is the loan amount (use only valid numbers e.g. 10000)?"
-  annual_rate: ""What is the Annual Percentage Rate? (e.g. use 5 for 5%)"
+  annual_rate: "What is the Annual Percentage Rate? (e.g. use 5 for 5%)"
   loan_duration_years: "What is the loan duration in years? (e.g. 3 for 3 years.)"
   not_valid_float: "Please use positive valid numbers."
   not_valid_integer: "Please use positive whole valid numbers."
-  correct_operator: "Must choose 1, 2, 3, 4"
+  give_repayment: "Your monthly loan repayment will be...."
+  currency: "$"
   recalculate: "Do you want to perform another loan calculation? (Y to calculate again)"
-  end: "Thank you for using the calculator, Good bye!"
-
-es:
-  welcome: "Bienvenido a la calculadora! Entre su nombre:"
-  valid_name: "Asegúrese de entrar un nombre válido."
-  first_number: "What's the first number?"
-  second_number: "What's the second number?"
-  not_valid: "Hmmm... that doesn't look like a valid number."
-  correct_operator: "Must choose 1, 2, 3, 4"
-  recalculate: "Do you want to perform another calculation? (Y to calculate again)"
+  recalculate_letter: 'y'
   end: "Thank you for using the Loan Calculator, Good bye!"
+
+fr:
+  welcome: "Bienvenue sur Loan Calculator! Entrez votre nom:"
+  greeting: "Salut"
+  valid_name: "Assurez-vous d'entrer un nom valide."
+  loan_amount: "Quel est le montant du prêt (utilisez uniquement des numéros valides, par exemple 10000)?"
+  annual_rate: "Qu'est-ce que le pourcentage annuel? (par exemple, utilisez 5 pour 5%)"
+  loan_duration_years: "Quelle est la durée du prêt en années? (par exemple 3 pendant 3 ans.)"
+  not_valid_float: "Veuillez utiliser des nombres valides positifs."
+  not_valid_integer: "Veuillez utiliser des nombres entiers valides positifs."
+  give_repayment: "Le remboursement mensuel de votre prêt sera de ...."
+  currency: "€"
+  recalculate: "Voulez-vous effectuer un autre calcul de prêt? (OUI pour calculer à nouveau)"
+  recalculate_letter: 'o'
+  end: "Merci d'utiliser le calculateur de prêt. Au Revoir!"
