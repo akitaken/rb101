@@ -4,7 +4,11 @@ end
 
 p result
 
-hsh = { a: "ant", b: "bear", c: "cat"}
+hsh = { a: "ant", b: "bear", c: "catee"}
 
 
-another_result = hsh.any? do |key
+another_result = hsh.any? do |key, value|
+  value.size > 4
+end
+
+p another_result
