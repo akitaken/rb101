@@ -11,6 +11,7 @@ WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # cols
                 [[1, 5, 9], [3, 5, 7]]              # diagonal
 
+
 def prompt(msg)
   puts "=> #{msg}"
 end
@@ -115,12 +116,16 @@ def detect_winner(brd)
 end
 # rubocop:enable Metrics/MethodLength
 
+player_score = 0
+computer_score = 0
 
 
 loop do
   board = initialize_board
 
   display_board(board)
+
+
 
   loop do
     player_places_piece!(board)
@@ -132,9 +137,16 @@ loop do
   end
   if someone_won?(board)
     prompt "#{detect_winner(board)} won!"
+    if detect_winner(board) == 'Player'
+      player_score += 1
+    else
+      computer_score += 1
+    end
   else
     prompt "It's a tie!"
   end
+
+  puts "Score is: Player: #{player_score} | Computer: #{computer_score}"
 
 
   prompt "Play again? (y or n)"
