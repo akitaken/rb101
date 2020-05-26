@@ -1,14 +1,6 @@
 # Tic Tac Toe
-# 1. Display the initial empty 3 x board
-# 2. Ask the user to mark a square
-# 3. Computer marks a square.
-# 4. Display the updated board state.
-# 5. If winner, display winner.
-# 6. If board is full, display tie.
-# 7. if neither winner nor board is full, go to #2
-# 8. Play again?
-# 9. If yes, go to #1
-# 10. Good bye!
+# Keeping score
+
 
 require 'pry'
 
@@ -21,6 +13,20 @@ WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
 
 def prompt(msg)
   puts "=> #{msg}"
+end
+
+def joinor(arr, delimiter=', ', conjunction='or')
+  joined_arr = ""
+  arr.each_with_index do | digit, idx |
+    if idx == (arr.size - 1)
+      joined_arr << "#{arr[idx]}"
+    elsif idx == (arr.size - 2)
+      joined_arr << "#{arr[idx]} #{conjunction} "
+    else
+      joined_arr << "#{arr[idx]}#{delimiter}"
+    end
+  end
+  joined_arr
 end
 
 # rubocop:disable Metrics/AbcSize
@@ -56,7 +62,7 @@ end
 def player_places_piece!(brd)
   square = ''
   loop do
-    prompt "Choose a square (#{empty_squares(brd).join(', ')}):"
+    prompt "Choose a square (#{joinor(empty_squares(brd))}):"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
     prompt "Sorry, that's not a valid choice."
@@ -109,6 +115,8 @@ def detect_winner(brd)
 end
 # rubocop:enable Metrics/MethodLength
 
+
+
 loop do
   board = initialize_board
 
@@ -122,15 +130,16 @@ loop do
     display_board(board)
     break if someone_won?(board) || board_full?(board)
   end
-
   if someone_won?(board)
     prompt "#{detect_winner(board)} won!"
   else
     prompt "It's a tie!"
   end
+
+
   prompt "Play again? (y or n)"
   answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  break unless answer.downcase.start_with?('y') 
 end
 
 prompt "Thanks for playing Tic Tac Toe! Good bye!"
