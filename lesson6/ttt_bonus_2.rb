@@ -10,6 +10,8 @@ COMPUTER_MARKER = 'O'
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # cols
                 [[1, 5, 9], [3, 5, 7]]              # diagonal
+INITIAL_SCORE = 0
+WINNING_SCORE = 2
 
 
 def prompt(msg)
@@ -87,24 +89,6 @@ end
 # rubocop:disable Metrics/MethodLength
 def detect_winner(brd)
   WINNING_LINES.each do |line|
-=begin    if brd[line[0]] == PLAYER_MARKER &&
-       brd[line[1]] == PLAYER_MARKER &&
-       brd[line[2]] == PLAYER_MARKER
-      return 'Player'
-    elsif brd[line[0]] == PLAYER_MARKER &&
-          brd[line[1]] == PLAYER_MARKER &&
-          brd[line[2]] == PLAYER_MARKER
-      return 'Computer'
-    end
-=end
-
-=begin    
-    if brd.values_at(*line).count(PLAYER_MARKER) == 3
-      return 'Player'
-    elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
-      return 'Computer'
-    end
-=end
 
     if brd.values_at(line[0], line[1], line[2]).count(PLAYER_MARKER) == 3
       return 'Player'
@@ -116,16 +100,13 @@ def detect_winner(brd)
 end
 # rubocop:enable Metrics/MethodLength
 
-player_score = 0
-computer_score = 0
+player_score = INITIAL_SCORE
+computer_score = INITIAL_SCORE
 
 
 loop do
   board = initialize_board
-
   display_board(board)
-
-
 
   loop do
     player_places_piece!(board)
@@ -148,10 +129,16 @@ loop do
 
   puts "Score is: Player: #{player_score} | Computer: #{computer_score}"
 
-
+  break if player_score == WINNING_SCORE || computer_score == WINNING_SCORE
   prompt "Play again? (y or n)"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y') 
+end
+
+if player_score == WINNING_SCORE
+  prompt "Player wins the game!"
+elsif computer_score == WINNING_SCORE
+  prompt Computer wins the game!""
 end
 
 prompt "Thanks for playing Tic Tac Toe! Good bye!"
