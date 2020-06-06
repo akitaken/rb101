@@ -4,7 +4,7 @@
 
 require 'pry'
 
-STARTING_PLAYER = 'Computer'
+STARTING_PLAYER = 'Choose'
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -12,7 +12,7 @@ WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # cols
                 [[1, 5, 9], [3, 5, 7]]              # diagonal
 INITIAL_SCORE = 0
-WINNING_SCORE = 2
+WINNING_SCORE = 5
 
 
 def prompt(msg)
@@ -153,8 +153,13 @@ player_score = INITIAL_SCORE
 computer_score = INITIAL_SCORE
 current_player = STARTING_PLAYER
 
+if STARTING_PLAYER == 'Choose'
+  prompt "Choose starting player"
+  selected_starting_player = gets.chomp
+end
 
 loop do
+  current_player = selected_starting_player
   board = initialize_board
   display_board(board)
 
