@@ -1,8 +1,10 @@
 # Tic Tac Toe
+# Improve the Game Loop
 
 
 require 'pry'
 
+STARTING_PLAYER = 'Player'
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -71,15 +73,18 @@ end
 
 def place_piece!(brd, player)
 
-  if player == 'player'
+  if player == 'Player'
     player_places_piece!(brd)
-  elsif player == 'computer'
-    computer_places_piece(brd)
+  elsif player == 'Computer'
+    computer_places_piece!(brd)
   end
 end
 
-def alternate_player(current_player, alternate_player)
-  # ADD THIS!!!
+def alternate_player(current_player)
+  if current_player == 'Player'
+    'Computer'
+  else 'Player'
+  end
 end
 
 def player_places_piece!(brd)
@@ -130,7 +135,6 @@ def someone_won?(brd)
 end
 
 
-
 # rubocop:disable Metrics/MethodLength
 def detect_winner(brd)
   WINNING_LINES.each do |line|
@@ -147,6 +151,7 @@ end
 
 player_score = INITIAL_SCORE
 computer_score = INITIAL_SCORE
+current_player = STARTING_PLAYER
 
 
 loop do
@@ -154,13 +159,13 @@ loop do
   display_board(board)
 
   loop do
-    player_places_piece!(board)
     display_board(board)
-    break if someone_won?(board) || board_full?(board)
-    computer_places_piece!(board)
+    place_piece!(board, current_player)
+    current_player = alternate_player(current_player)
     display_board(board)
     break if someone_won?(board) || board_full?(board)
   end
+
   if someone_won?(board)
     prompt "#{detect_winner(board)} won!"
     if detect_winner(board) == 'Player'
@@ -182,7 +187,7 @@ end
 if player_score == WINNING_SCORE
   prompt "Player wins the game!"
 elsif computer_score == WINNING_SCORE
-  prompt Computer wins the game!""
+  prompt "Computer wins the game!"
 end
 
 prompt "Thanks for playing Tic Tac Toe! Good bye!"
