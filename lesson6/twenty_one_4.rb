@@ -8,7 +8,11 @@
 # 6. If dealer bust, player wins.
 # 7. Compare cards and declare winner.
 
-# Twenty One - working out how to calculate an ace
+# Twenty One: I got up to the 4th exercise, but the program
+# has a bug re: the aces. 
+# Go through LS solution and come back to this to see if I can 
+# work it out.
+
 
 require 'pry'
 
