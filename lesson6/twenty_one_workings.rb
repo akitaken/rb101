@@ -7,5 +7,15 @@ three = one.map do |letter|
   end
 end
 
-# p three.flatten(1)
+p three.flatten(1)
 
+apple = 2
+
+
+loop do
+  happy = 1
+  apple = 5
+  break
+end
+
+p apple

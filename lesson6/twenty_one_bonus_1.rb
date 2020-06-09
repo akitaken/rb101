@@ -1,5 +1,5 @@
 # Twenty One
-# This is the LS solution - may have some small modifications
+# Bonus feature: Calculating the total
 
 require 'pry'
 
@@ -37,15 +37,12 @@ def total(cards)
   sum
 end
 
-def busted?(cards)
-  total(cards) > 21
+def busted?(total_cards)
+  total_cards > 21
 end
 
 # :tie, :dealer, :player, :dealer_busted, :player_busted
-def detect_result(dealer_cards, player_cards)
-  player_total = total(player_cards)
-  dealer_total = total(dealer_cards)
-
+def detect_result(dealer_total, player_total)
   if player_total > 21
     :player_busted
   elsif dealer_total > 21
@@ -59,8 +56,8 @@ def detect_result(dealer_cards, player_cards)
   end
 end
 
-def display_result(dealer_cards, player_cards)
-  result = detect_result(dealer_cards, player_cards)
+def display_result(dealer_total, player_total)
+  result = detect_result(dealer_total, player_total)
 
   case result
   when :player_busted
@@ -97,8 +94,11 @@ loop do
     dealer_cards << deck.pop
   end
 
+  player_total = total(player_cards)
+  dealer_total = total(dealer_cards)
+
   prompt "Dealer has #{dealer_cards[0]} and ?"
-  prompt "You have: #{player_cards[0]} and #{player_cards[1]}, for a total of #{total(player_cards)}."
+  prompt "You have: #{player_cards[0]} and #{player_cards[1]}, for a total of #{player_total}."
 
   # player turn
   loop do
@@ -112,47 +112,49 @@ loop do
 
     if player_turn == 'h'
       player_cards << deck.pop
+      player_total = total(player_cards)
       prompt "You choose to hit!"
       prompt "Your cards are now: #{player_cards}"
-      prompt "Your total is now: #{total(player_cards)}"
+      prompt "Your total is now: #{player_total}"
     end
 
-    break if player_turn == 's' || busted?(player_cards)
+    break if player_turn == 's' || busted?(player_total)
   end
 
-  if busted?(player_cards)
-    display_result(dealer_cards, player_cards)
+  if busted?(player_total)
+    display_result(dealer_total, player_total)
     play_again? ? next : break
   else
-    prompt "You stayed at #{total(player_cards)}"
+    prompt "You stayed at #{player_total}"
   end
 
   # dealer turn
   prompt "Dealer turn..."
 
   loop do
-    break if total(dealer_cards) >= 17
+    break if dealer_total >= 17
 
     prompt "Dealer hits!"
     dealer_cards << deck.pop
+    dealer_total = total(dealer_cards)
     prompt "Dealer's cards are now: #{dealer_cards}"
   end
 
-  if busted?(dealer_cards)
-    prompt "Dealer total is now: #{total(dealer_cards)}"
-    display_result(dealer_cards, player_cards)
+  if busted?(dealer_total)
+    prompt "Dealer total is now: #{dealer_total}"
+    display_result(dealer_total, player_total)
     play_again? ? next : break
   else
-    prompt "Dealer stays at #{total(dealer_cards)}"
+    prompt "Dealer stays at #{dealer_cards}"
   end
 
   # both player and dealer stays - compare cards!
   puts "================="
-  prompt "Dealer has #{dealer_cards}, for a total of: #{total(dealer_cards)}"
-  prompt "Player has #{player_cards}, for a total of : #{total(player_cards)}"
+  prompt "Dealer has #{dealer_cards}, for a total of: #{dealer_total}"
+  prompt "Player has #{player_cards}, for a total of : #{player_total}"
   puts "================="
 
-  display_result(dealer_cards, player_cards)
+  display_result(dealer_total, player_total)
 
   break unless play_again?
 end
