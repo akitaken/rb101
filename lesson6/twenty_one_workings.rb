@@ -10,6 +10,7 @@ end
 p three.flatten(1)
 
 apple = 2
+pear = 3
 
 
 loop do
@@ -19,3 +20,14 @@ loop do
 end
 
 p apple
+
+def method(pear)
+  pear[:player] += 1 
+end
+
+
+score = {player: 0, dealer: 0}
+
+method(score)
+
+p score

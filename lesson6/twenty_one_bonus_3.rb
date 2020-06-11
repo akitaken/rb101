@@ -1,6 +1,5 @@
 # Twenty One
-# Bonus feature: Whatever-One (changing key numbers to constants)
-# Ending the round more consistently
+# Bonus feature: Keeping track of who won each round
 
 require 'pry'
 
@@ -59,7 +58,7 @@ def detect_result(dealer_total, player_total)
   end
 end
 
-def display_result(dealer_total, player_total, dealer_cards, player_cards)
+def display_result(dealer_total, player_total, dealer_cards, player_cards, score)
   result = detect_result(dealer_total, player_total)
 
   puts "================="
@@ -79,6 +78,21 @@ def display_result(dealer_total, player_total, dealer_cards, player_cards)
   when :tie
     prompt "It's a tie!"
   end
+
+  puts "================="
+  prompt "Player Total Wins: #{score[:player]} | Dealer Total Wins: #{score[:dealer]}"
+  puts "================="
+
+end
+
+def update_wins!(score, dealer_total, player_total)
+  result = detect_result(dealer_total, player_total)
+
+  if result == :player_busted || result == :dealer
+    score[:dealer] += 1
+  elsif result == :dealer_busted || result == :player
+    score[:player] += 1
+  end
 end
 
 def play_again?
@@ -88,8 +102,13 @@ def play_again?
   answer.downcase.start_with?('y')
 end
 
+score = {player: 0, dealer: 0}
+
 loop do
   prompt "Welcome to Twenty-One!"
+
+
+
 
   # initialize vars
   deck = initialize_deck
@@ -130,7 +149,8 @@ loop do
   end
 
   if busted?(player_total)
-    display_result(dealer_total, player_total, dealer_cards, player_cards)
+    update_wins!(score, dealer_total, player_total)
+    display_result(dealer_total, player_total, dealer_cards, player_cards, score)
     play_again? ? next : break
   else
     prompt "You stayed at #{player_total}"
@@ -150,16 +170,16 @@ loop do
 
   if busted?(dealer_total)
     prompt "Dealer total is now: #{dealer_total}"
-    display_result(dealer_total, player_total, dealer_cards, player_cards)
+    update_wins!(score, dealer_total, player_total)
+    display_result(dealer_total, player_total, dealer_cards, player_cards, score)
     play_again? ? next : break
   else
     prompt "Dealer stays at #{dealer_cards}"
   end
 
   # both player and dealer stays - compare cards!
-  
-
-  display_result(dealer_total, player_total, dealer_cards, player_cards)
+  update_wins!(score, dealer_total, player_total)
+  display_result(dealer_total, player_total, dealer_cards, player_cards, score)
 
   break unless play_again?
 end
