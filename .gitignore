@@ -1,0 +1,4 @@
+# Ignore list
+
+.DS_Store
+*.plist
